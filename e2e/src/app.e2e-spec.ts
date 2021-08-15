@@ -1,16 +1,19 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, by, element, logging, ElementFinder, ElementArrayFinder  } from 'protractor'
+import { employees } from './mock-data'
 
 describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('finlex-ems-app app is running!');
+  it('create employee button should work',() => {
+    expect(element(by.className('modal')).isPresent()).toBeFalsy('The modal window should not appear right now');
+    element(by.buttonText('Add Employee')).click();
+    expect(element(by.className('modal')).isPresent()).toBeTruthy('The modal window should appear now');
   });
 
   afterEach(async () => {
@@ -21,3 +24,7 @@ describe('workspace-project App', () => {
     } as logging.Entry));
   });
 });
+
+export class Base {
+  
+}

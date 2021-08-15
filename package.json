@@ -33,7 +33,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  
   "dependencies": {
     "@angular/animations": "9.1.6",
     "@angular/cdk": "^9.2.3",

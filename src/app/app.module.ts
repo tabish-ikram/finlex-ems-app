@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MdbModalModule,
     ReactiveFormsModule,
     FormsModule,
-    MdbFormsModule
+    
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],

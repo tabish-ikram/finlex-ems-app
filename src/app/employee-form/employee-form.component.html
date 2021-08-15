@@ -20,21 +20,22 @@
               id="first_name"
               class="form-control"
               formControlName="first_name"
+              name="first_name"
             />
             <label mdbLabel class="form-label" for="first_name"
               >First Name</label
             >
             <mdb-error
               *ngIf="
-                (first_name?.dirty || first_name?.touched) &&
-                first_name?.errors?.required
+                (form.first_name?.dirty || form.first_name?.touched) &&
+                form.first_name?.errors?.required
               "
               >Name is required</mdb-error
             >
             <mdb-error
               *ngIf="
-                (first_name?.dirty || first_name?.touched) &&
-                first_name?.errors?.minlength
+                (form.first_name?.dirty || form.first_name?.touched) &&
+                form.first_name?.errors?.minlength
               "
               >Name should contain at least 2 characters</mdb-error
             >
@@ -48,19 +49,20 @@
               id="last_name"
               class="form-control"
               formControlName="last_name"
+              name="last_name"
             />
             <label mdbLabel class="form-label" for="last_name">Last Name</label>
             <mdb-error
               *ngIf="
-                (last_name?.dirty || last_name?.touched) &&
-                last_name?.errors?.required
+                (form.last_name?.dirty || form.last_name?.touched) &&
+                form.last_name?.errors?.required
               "
               >Name is required</mdb-error
             >
             <mdb-error
               *ngIf="
-                (last_name?.dirty || last_name?.touched) &&
-                last_name?.errors?.minlength
+                (form.last_name?.dirty || form.last_name?.touched) &&
+                form.last_name?.errors?.minlength
               "
               >Name should contain at least 2 characters</mdb-error
             >
@@ -74,16 +76,17 @@
               type="email"
               id="email"
               class="form-control"
+              name="email"
             />
             <label mdbLabel class="form-label" for="email">Email</label>
             <mdb-error
               *ngIf="
-                (email?.dirty || email?.touched) && email?.errors?.required
+                (form.email?.dirty || form.email?.touched) && form.email?.errors?.required
               "
               >Email address is required</mdb-error
             >
             <mdb-error
-              *ngIf="(email?.dirty || email?.touched) && email?.errors?.email"
+              *ngIf="(form.email?.dirty || form.email?.touched) && form.email?.errors?.email"
               >Email address is not valid</mdb-error
             >
           </mdb-form-control>

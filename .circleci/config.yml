@@ -35,7 +35,7 @@ jobs:
             echo export const environment=${ENV_OBJECT} > src/environments/environment.prod.ts
       - run:
           name: Run Build
-          command: npm run build
+          command: npm run build:prod
       - deploy:
           command: |
             ./node_modules/.bin/surge --project ~/angular-circleci-surge/dist/finlex-ems-app --domain familiar-arithmetic.surge.sh

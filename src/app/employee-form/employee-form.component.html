@@ -1,1 +1,102 @@
-<p>employee-form works!</p>
+<div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="closeModal()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body">
+        <form [formGroup]="customerForm" (ngSubmit)="submitForm()" novalidate>
+          <mdb-form-control>
+            <input
+              mdbValidate
+              mdbInput
+              type="text"
+              id="first_name"
+              class="form-control"
+              formControlName="first_name"
+            />
+            <label mdbLabel class="form-label" for="first_name"
+              >First Name</label
+            >
+            <mdb-error
+              *ngIf="
+                (first_name?.dirty || first_name?.touched) &&
+                first_name?.errors?.required
+              "
+              >Name is required</mdb-error
+            >
+            <mdb-error
+              *ngIf="
+                (first_name?.dirty || first_name?.touched) &&
+                first_name?.errors?.minlength
+              "
+              >Name should contain at least 2 characters</mdb-error
+            >
+          </mdb-form-control>
+
+          <mdb-form-control>
+            <input
+              mdbValidate
+              mdbInput
+              type="text"
+              id="last_name"
+              class="form-control"
+              formControlName="last_name"
+            />
+            <label mdbLabel class="form-label" for="last_name">Last Name</label>
+            <mdb-error
+              *ngIf="
+                (last_name?.dirty || last_name?.touched) &&
+                last_name?.errors?.required
+              "
+              >Name is required</mdb-error
+            >
+            <mdb-error
+              *ngIf="
+                (last_name?.dirty || last_name?.touched) &&
+                last_name?.errors?.minlength
+              "
+              >Name should contain at least 2 characters</mdb-error
+            >
+          </mdb-form-control>
+
+          <mdb-form-control>
+            <input
+              mdbValidate
+              mdbInput
+              formControlName="email"
+              type="email"
+              id="email"
+              class="form-control"
+            />
+            <label mdbLabel class="form-label" for="email">Email</label>
+            <mdb-error
+              *ngIf="
+                (email?.dirty || email?.touched) && email?.errors?.required
+              "
+              >Email address is required</mdb-error
+            >
+            <mdb-error
+              *ngIf="(email?.dirty || email?.touched) && email?.errors?.email"
+              >Email address is not valid</mdb-error
+            >
+          </mdb-form-control>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">
+        Close
+      </button>
+      <button type="button" class="btn btn-primary">
+        Save changes
+      </button>
+    </div>
+  </div>
+</div>

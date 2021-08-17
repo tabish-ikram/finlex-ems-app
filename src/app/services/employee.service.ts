@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
-import { Employee } from '../../app/models/employee';
+import { Employee, Employees } from '../../app/models/employee';
 
 const baseUrl = `${environment.apiBaseUrl}/users`;
 
@@ -11,7 +11,7 @@ export class EmployeeService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Employee[]>(baseUrl);
+        return this.http.get<Employees>(baseUrl);
     }
 
     getById(id: string) {

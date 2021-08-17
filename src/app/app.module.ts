@@ -9,7 +9,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MdbModalModule, } from 'mdb-angular-ui-kit/modal';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MdbModalModule,
     ReactiveFormsModule,
     FormsModule,
-    
+    MdbFormsModule
+
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],

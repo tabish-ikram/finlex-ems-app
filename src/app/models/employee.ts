@@ -1,9 +1,17 @@
 export class Employee {
     id?: string;
     title?: string;
-    // tslint:disable-next-line:variable-name
     first_name?: string;
-    // tslint:disable-next-line:variable-name
     last_name?: string;
     email?: string;
+}
+
+export class Employees {
+    page?: number;
+    per_page?: number;
+    total?: number;
+    total_pages?: number;
+    data?: Employee[];
+    support?:any;
+
 }

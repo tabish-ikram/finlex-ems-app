@@ -1,17 +1,18 @@
-<div class="container">
+<div class="container employee-list-container">
   <button
     type="button"
     mdbBtn
     color="indigo"
     rounded="true"
     size="sm"
-    class="my-0"
+    class="btn-create-employee"
     id="create-employee-btn"
     (click)="createEmployee()"
   >
     Add Employee
   </button>
 
+  <!-- Table -->
   <table class="table">
     <thead>
       <tr>
@@ -31,7 +32,7 @@
               color="indigo"
               rounded="true"
               size="sm"
-              class="my-0"
+              class="btn-view-employee"
               (click)="viewDetails(employee)"
             >
               View
@@ -46,7 +47,7 @@
               color="indigo"
               rounded="true"
               size="sm"
-              class="my-0"
+              class="btn-update-employee"
               (click)="updateEmployee(employee)"
             >
               Update
@@ -61,8 +62,8 @@
               color="danger"
               rounded="true"
               size="sm"
-              class="my-0"
-              (click)="deleteEmployee(employee.id)"
+              class="btn-delete-employee"
+              (click)="openDeleteModal(modalDelete, employee)"
             >
               Remove
             </button>
@@ -71,4 +72,34 @@
       </tr>
     </tbody>
   </table>
+  <!-- Table -->
 </div>
+
+<!-- Modal -->
+<ng-template #modalDelete>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-confirmation-lable">
+      Delete Employee Record
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <div class="modal-body">Are you sure you want to delete this record?</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="closeModal()"
+    >
+      Close
+    </button>
+    <button type="button" class="btn btn-primary" (click)="deleteEmployee()">
+      Delete
+    </button>
+  </div>
+</ng-template>
+<!-- Modal -->

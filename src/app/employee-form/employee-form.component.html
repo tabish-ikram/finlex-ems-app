@@ -1,7 +1,8 @@
-<div>
-  <div class="modal-content">
+<div class="container employee-form-container">
+  <!-- Modal -->
+  <div class="modal-content">  
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <h5 class="modal-title">Employee Details</h5>
       <button
         type="button"
         class="btn-close"
@@ -11,7 +12,7 @@
     </div>
     <div class="modal-body">
       <div class="modal-body">
-        <form [formGroup]="customerForm" (ngSubmit)="submitForm()" novalidate>
+        <form [formGroup]="employeeForm" novalidate>
           <mdb-form-control>
             <input
               mdbValidate
@@ -30,14 +31,14 @@
                 (form.first_name?.dirty || form.first_name?.touched) &&
                 form.first_name?.errors?.required
               "
-              >Name is required</mdb-error
+              >First Name is required</mdb-error
             >
             <mdb-error
               *ngIf="
                 (form.first_name?.dirty || form.first_name?.touched) &&
                 form.first_name?.errors?.minlength
               "
-              >Name should contain at least 2 characters</mdb-error
+              >First Name should contain at least 3 characters</mdb-error
             >
           </mdb-form-control>
 
@@ -57,14 +58,14 @@
                 (form.last_name?.dirty || form.last_name?.touched) &&
                 form.last_name?.errors?.required
               "
-              >Name is required</mdb-error
+              >Last Name is required</mdb-error
             >
             <mdb-error
               *ngIf="
                 (form.last_name?.dirty || form.last_name?.touched) &&
                 form.last_name?.errors?.minlength
               "
-              >Name should contain at least 2 characters</mdb-error
+              >Last Name should contain at least 3 characters</mdb-error
             >
           </mdb-form-control>
 
@@ -93,13 +94,14 @@
         </form>
       </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" *ngIf="action !== 'view'">
       <button type="button" class="btn btn-secondary" (click)="closeModal()">
         Close
       </button>
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary btn-save" (click)="submitForm()">
         Save changes
       </button>
     </div>
   </div>
+  <!-- Modal -->
 </div>

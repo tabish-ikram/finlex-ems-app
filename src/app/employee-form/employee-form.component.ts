@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../app/models/employee';
 import { EmployeeService } from '../../app/services/employee.service';
-import { first } from 'rxjs/operators';
 
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
   Validators,
@@ -20,8 +18,9 @@ import { Subscription } from 'rxjs';
 })
 export class EmployeeFormComponent implements OnInit {
   employee: Employee;
-  customerForm: FormGroup;
+  employeeForm: FormGroup;
   action: string;
+  subscription: Subscription;
 
   constructor(
     private modalRef: MdbModalRef<EmployeeFormComponent>,
@@ -29,30 +28,37 @@ export class EmployeeFormComponent implements OnInit {
     private employeeService: EmployeeService
   ) {}
 
-  ngOnInit() {
-    this.customerForm = this.createFormGroup();
+  ngOnInit(): void {
+    this.employeeForm = this.createFormGroup();
 
+    // if the action is viee or update the employee details then set the form values
     if (this.action === 'view' || this.action === 'edit') {
       this.setFormValues();
     }
+  }
+
+  // Getters to access from template
+
+  get form() {
+    return this.employeeForm.controls;
   }
 
   createFormGroup(): FormGroup {
     return this.fb.group({
       first_name: new FormControl(null, [
         Validators.required,
-        Validators.minLength(2),
+        Validators.minLength(3),
       ]),
       last_name: new FormControl(null, [
         Validators.required,
-        Validators.minLength(2),
+        Validators.minLength(3),
       ]),
       email: new FormControl(null, [Validators.required, Validators.email]),
     });
   }
 
-  setFormValues() {
-    this.customerForm.patchValue({
+  setFormValues(): void {
+    this.employeeForm.patchValue({
       first_name: this.employee.first_name,
       last_name: this.employee.last_name,
       email: this.employee.email,
@@ -65,24 +71,18 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
 
-  // Getters to access from template
-
-  get form() {
-    return this.customerForm.controls;
-  }
-
-  createEmployee() {
-    console.log(this.customerForm.value);
-
+  createEmployee(): void {
+    // To create new employee
     this.employeeService
-      .create(this.customerForm.value)
-      .pipe(first())
+      .create(this.employeeForm.value)
       .subscribe({
         next: () => {
-          // this.alertService.success('User added', { keepAfterRouteChange: true });
+          // We can implement toast & loader here
+          // this.alertService.success('User added');
           this.closeModal();
         },
         error: (error) => {
+          // We can implement toast & loader here
           // this.alertService.error(error);
           // this.loading = false;
           this.closeModal();
@@ -90,26 +90,28 @@ export class EmployeeFormComponent implements OnInit {
       });
   }
 
-  submitForm() {
+  submitForm(): void {
+    // Submit form based on the action create/update
     if (this.action === 'new') {
       this.createEmployee();
     } else if (this.action === 'edit') {
       this.updateEmployee(this.employee.id);
     }
   }
-  private updateEmployee(id: string) {
+
+  updateEmployee(id: string): void {
+    // To update the employee record
     this.employeeService
-      .update(id, this.customerForm.value)
-      .pipe(first())
+      .update(id, this.employeeForm.value)
       .subscribe({
         next: () => {
-          // this.alertService.success("User updated", {
-          //   keepAfterRouteChange: true,
-          // });
-          // this.router.navigate(["../../"], { relativeTo: this.route });
           this.closeModal();
+          // We can implement toast & loader here
+          // this.alertService.success('User Updartes');
+          // this.loading = false;
         },
         error: (error) => {
+          // We can implement toast & loader here
           // this.alertService.error(error);
           // this.loading = false;
           this.closeModal();
@@ -117,7 +119,11 @@ export class EmployeeFormComponent implements OnInit {
       });
   }
 
-  closeModal() {
+  closeModal(): void {
     this.modalRef.close();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EmployeeService } from '../../app/services/employee.service';
 import { first } from 'rxjs/operators';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -78,7 +78,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   openDeleteModal(
-    component: ComponentType<EmployeeFormComponent>,
+    component: ComponentType<EmployeeFormComponent> | TemplateRef<EmployeeFormComponent>,
     employeeData: Employee
   ): void {
     // Open confirmation modal for deleting the employee record

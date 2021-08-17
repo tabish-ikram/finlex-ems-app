@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Functionality overview
 
-The EMS application is a front-end CRUD project. It uses a API for all requests. It can viewed at http://familiar-arithmetic.surge.sh/
+The EMS application is a front-end CRUD project. It uses APIs for all the requests. It can viewed at http://familiar-arithmetic.surge.sh/
 
 ## General functionality:
 
@@ -81,4 +81,9 @@ This tree represents the directories this repository proposes to be added.
       │   ├── services
       └── mocks
 ```
+
+- MDBootstrap library is used for UI components.
+- Services are used for http communcation with the server.
+- Components are used to build the required functionalities.
+- Modular structure has been used as per the style guide of angular.
 

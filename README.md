@@ -59,7 +59,7 @@ E2E testing can be performed by running the below command
 
 # Automatic deployement of app to Surge using CircleCI
 
- Do some chnages and push it to the github repository, CircleCi will be notified and start build process starting from checkout, test and build. If every thing success it will deploy the app to Surge.
+ Do some changes and push it to the github repository, CircleCi will be notified and start build process starting from checkout, test and build. If every thing success it will deploy the app to Surge.
 
  Configuration file is present inside the .cicleci folder.
 

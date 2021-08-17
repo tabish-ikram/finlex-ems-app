@@ -21,11 +21,11 @@ describe('Testing EMS application', () => {
   });
 
   it('should create a new employee', () => {
-    const customer = employee;
+    const employeeData = employee;
 
-      cy.get('#first_name').type(customer.first_name)
-      cy.get('#last_name').type(customer.last_name)
-      cy.get('#email').type(customer.email)
+      cy.get('#first_name').type(employeeData.first_name)
+      cy.get('#last_name').type(employeeData.last_name)
+      cy.get('#email').type(employeeData.email)
       cy.get('.btn-save').click()
   });
 
